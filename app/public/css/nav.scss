@@ -1,0 +1,148 @@
+@import "../css/colors.scss";
+
+// styling for header and menu items
+.header {
+    background-color: $header-bg-color;
+    box-shadow: 1px 1px 4px 0 rbga(0,0,0,.1);
+    position: fixed;
+    width: 100%;
+    height: 64px;
+    z-index: 3;
+}
+
+.header ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    background-color: $header-bg-color;
+}
+
+.header ul a {
+    display: block;
+    padding: 20px;
+    text-decoration: none;
+}
+
+.header ul a:hover {
+    background-color: $a-tag-color-hover;
+    border: 1px solid #aaa;
+}
+
+.header ul a:active {
+    background-color: $a-tag-color-active;
+    border: 1px solid #aaa;
+}
+
+// styling for x button in mobile
+.header .logo {
+    float: left;
+    display: block;
+    font-size: 1.5em;
+    // padding: 10px 20px;
+    margin: 10px 20px
+}
+
+.header .logo img {
+    height: inherit;
+    vertical-align: middle;
+}
+
+.header .menu {
+    clear: both;
+    max-height: 0;
+    transition:max-height .2s ease-out;
+}
+
+.header .menu-icon {
+    // adding margin to match logo
+    margin-top: 2%;
+    padding: 20px 30px;
+    position: relative;
+    float: right;
+    cursor: pointer;
+}
+
+// hamburger menu 
+.header .menu-icon .nav-icon {
+    background: #333;
+    display: block;
+    height: 2px;
+    width: 18px;
+    position: relative;
+    transition:all .2s ease-out;
+}
+
+.header .menu-icon .nav-icon:before {
+    background: #333;
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transition:all .2s ease-out;
+    top:5px;
+}
+
+.header .menu-icon .nav-icon:after {
+    background: #333;
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transition:all .2 ease-out;
+    top:-5px;
+}
+
+.header .menu-btn {
+    display: none;
+}
+
+// animation when hidden checkbox masked by span is clicked
+.header .menu-btn:checked ~ .menu {
+    max-height: 240px;
+}
+
+.header .menu-btn:checked ~ .menu-icon .nav-icon {
+    background: transparent;
+}
+
+.header .menu-btn:checked ~ .menu-icon .nav-icon:before {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+.header .menu-btn:checked ~ .menu-icon .nav-icon:after {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+// tablet resolution
+@media (min-width: 48em){
+
+    // floating list items from stacked blocks
+    .header li {
+        float: right;
+    }
+    // spacing a tags ver/hor
+    .header li a {
+        padding: 20px 30px;
+        height: 100%;
+    }
+    
+    .header .menu-icon {
+        display: none;
+    }
+    
+    .header .menu {
+        height: inherit;
+        clear: none;
+        float: right;
+        max-height: none;
+    }
+
+    .header .menu li {
+        height: inherit;
+    }
+}
